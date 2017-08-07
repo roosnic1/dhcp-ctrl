@@ -1,0 +1,4 @@
+node_modules
+
+# Private configuration
+config.json

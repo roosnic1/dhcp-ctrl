@@ -1,0 +1,24 @@
+{
+  "name": "dhcp-ctrl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=production node index.js",
+    "serve": "NODE_ENV=dev node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roosnic1/dhcp-ctrl.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/roosnic1/dhcp-ctrl/issues"
+  },
+  "homepage": "https://github.com/roosnic1/dhcp-ctrl#readme",
+  "dependencies": {
+    "dhcp": "^0.2.9"
+  }
+}
