@@ -40,12 +40,16 @@ server.listen(ENV === 'dev' ? 5555 : undefined);
 // Express
 var app = express();
 
-app.get('/', (req, res) => {
-    const response = {
-        name: 'DHCP state',
-        data: server.getState()
+app.get('/v1/state', (req, res) => {
+  const dhcpSate = server.getState();
+  const states = [];
+  for (let key in dhcpSate) {
+    if (dhcpSate.hasOwnProperty(key)) {
+      dhcpSate[key].mac = key;
+      states.push(dhcpSate[key]);
     }
-    res.json(response);
+  }
+  res.json(states);
 });
 
 app.listen(process.env.PORT || 8080);
