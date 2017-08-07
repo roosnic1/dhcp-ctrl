@@ -1,4 +1,6 @@
-const dhcp = require('dhcp');
+//const dhcp = require('dhcp');
+const dhcp = require('../../nodejs/node-dhcp'); // for local dev
+const express = require('express');
 const config = require('./config.json');
 
 const ENV = process.env.NODE_ENV;
@@ -17,8 +19,9 @@ const server = dhcp.createServer({
     ]
 });
 
-server.on('message', function (data) {
-  console.log(data);
+server.on('bound', function(state) {
+  console.log("BOUND:");
+  console.log(state);
 });
 
 server.on("error", function (err, data) {
@@ -31,9 +34,25 @@ server.on("listening", function (sock) {
 });
 
 console.log('Starting Server');
-
 server.listen(ENV === 'dev' ? 5555 : undefined);
 
+
+// Express
+var app = express();
+
+app.get('/', (req, res) => {
+    const response = {
+        name: 'DHCP state',
+        data: server.getState()
+    }
+    res.json(response);
+});
+
+app.listen(process.env.PORT || 8080);
+
+
 process.on('SIGINT', () => {
-    server.close();
+    if (server) {
+        server.close();
+    }
 });
