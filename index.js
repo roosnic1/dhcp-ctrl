@@ -34,13 +34,14 @@ server.on("listening", function (sock) {
 });
 
 console.log('Starting Server');
-server.listen(ENV === 'dev' ? 5555 : undefined);
+//server.listen(ENV === 'dev' ? 5555 : undefined);
+server.listen();
 
 
 // Express
 var app = express();
 
-app.get('/v1/state', (req, res) => {
+app.get('/v1/api/state', (req, res) => {
   const dhcpSate = server.getState();
   const states = [];
   for (let key in dhcpSate) {
@@ -52,7 +53,7 @@ app.get('/v1/state', (req, res) => {
   res.json(states);
 });
 
-app.listen(process.env.PORT || 8080);
+app.listen(process.env.PORT || 3001);
 
 
 process.on('SIGINT', () => {
