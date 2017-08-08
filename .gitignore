@@ -1,4 +1,4 @@
 node_modules
 
 # Private configuration
-config.json
+src/config.json

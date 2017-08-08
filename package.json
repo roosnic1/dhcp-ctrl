@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "NODE_ENV=production node index.js",
-    "serve": "NODE_ENV=dev nodemon --watch index.js index.js"
+    "serve": "NODE_ENV=dev nodemon --watch index.js --watch src index.js"
   },
   "repository": {
     "type": "git",
