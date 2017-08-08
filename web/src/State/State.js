@@ -24,7 +24,7 @@ class State extends Component {
     return (
       <div className="State">
         <h1>State</h1>
-        
+
       </div>
     );
   }
